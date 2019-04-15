@@ -11,14 +11,14 @@ public class NetworkUtils{
     companion object {
         private val VK_API_BASE_URL: String = "https://api.vk.com"
         private val VK_USERS_GET: String = "/method/users.get"
-        private val PARAM_USER_ID: String = "user_id"
+        private val PARAM_USER_ID: String = "user_ids"
         private val PARAM_VERSION: String = "v"
         private var ACCESS_TOKEN: String? = "access_token"
 
-        public fun generateURL(userId: String): URL {
+        public fun generateURL(userIds: String): URL {
             var builtUri: Uri = Uri.parse(VK_API_BASE_URL + VK_USERS_GET)
                 .buildUpon()
-                .appendQueryParameter(PARAM_USER_ID, userId)
+                .appendQueryParameter(PARAM_USER_ID, userIds)
                 .appendQueryParameter(PARAM_VERSION, "5.8")
                 .appendQueryParameter(ACCESS_TOKEN, "91771490917714909177149027911ee5289917791771490cdc6f6832d10981da340b90d")
                 .build()

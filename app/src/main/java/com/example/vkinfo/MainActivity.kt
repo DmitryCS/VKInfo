@@ -58,10 +58,16 @@ class MainActivity : AppCompatActivity() {
                 super.onPostExecute(response)
                 var jsonResponse: JSONObject = JSONObject(response)
                 var jsonArray: JSONArray = jsonResponse.getJSONArray("response")
-                var userInfo: JSONObject = jsonArray.getJSONObject(0)
-                firstName = userInfo.getString("first_name")
-                lastName = userInfo.getString("last_name")
-                var resultingString: String = "Имя: " + firstName + "\n" + "Фамилия: " + lastName
+                //var userInfo: JSONObject = jsonArray.getJSONObject(0)
+                var resultingString: String = ""
+                for(i:Int in 0..(jsonArray.length()-1)){
+                    var userInfo: JSONObject = jsonArray.getJSONObject(i)
+
+                    firstName = userInfo.getString("first_name")
+                    lastName = userInfo.getString("last_name")
+                    resultingString += "Имя: " + firstName + "\n" + "Фамилия: " + lastName + "\n\n"
+                }
+
                 textViewResult.setText(resultingString)
 
                 showResultTextView()
